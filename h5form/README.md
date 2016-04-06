@@ -10,47 +10,47 @@ Just include after loading webix. Tested with webix version 3.2.4 and current de
 
 Example:
 
-webix.ui({
-{
-	view: 'h5form',
-	rules:{
-		'pwdrep':function(v) {
-			if (!webix.rules.isNotEmpty(v)) {
-				this.markInvalid('pwdrep', 'Please repeat the new password.');
-				return false;
+	webix.ui({
+	{
+		view: 'h5form',
+		rules:{
+			'pwdrep':function(v) {
+				if (!webix.rules.isNotEmpty(v)) {
+					this.markInvalid('pwdrep', 'Please repeat the new password.');
+					return false;
+				}
+				var d = this.getValues();
+				if (d.newpwd != d.pwdrep){
+					this.markInvalid('pwdrep', 'This does not match your new password.');
+					return false;
+				}
+				return true;												
 			}
-			var d = this.getValues();
-			if (d.newpwd != d.pwdrep){
-				this.markInvalid('pwdrep', 'This does not match your new password.');
-				return false;
-			}
-			return true;												
-		}
-	},
-	elements: [
-		{ name:'curpwd', view: 'text', label: 'Current', type: 'password', required:true, 
-			attributes:{ maxlength: 100, required:'required' } },
-		{ name: 'newpwd', view: 'text', label: 'New', type: 'password', required:true, 
-			attributes:{ pattern:'.{10,}', maxlength: 100, required:'required' } },
-		{ name: 'pwdrep', view: 'text', label: 'Repeat', type: 'password', required:true,
-			attributes:{ pattern:'.{10,}', minlength:10, maxlength: 100, required:'required' } },
-		{ 
-			margin:10, 
-			cols:[
-				{},
-				{ view:"button", value:"Submit" , width:160, type:"form", 
-					click:function(){
-						var form = this.getFormView();
-						if (form.validate()){
-							webix.alert("Validation reported success!")
-						}
-					}													
-				},
-			]
 		},
-		{}
-	]	
-})
+		elements: [
+			{ name:'curpwd', view: 'text', label: 'Current', type: 'password', required:true, 
+				attributes:{ maxlength: 100, required:'required' } },
+			{ name: 'newpwd', view: 'text', label: 'New', type: 'password', required:true, 
+				attributes:{ pattern:'.{10,}', maxlength: 100, required:'required' } },
+			{ name: 'pwdrep', view: 'text', label: 'Repeat', type: 'password', required:true,
+				attributes:{ pattern:'.{10,}', minlength:10, maxlength: 100, required:'required' } },
+			{ 
+				margin:10, 
+				cols:[
+					{},
+					{ view:"button", value:"Submit" , width:160, type:"form", 
+						click:function(){
+							var form = this.getFormView();
+							if (form.validate()){
+								webix.alert("Validation reported success!")
+							}
+						}													
+					},
+				]
+			},
+			{}
+		]	
+	})
 
 ## Issues
 
@@ -76,7 +76,7 @@ team and should be fixed with the next build.
 ## License
 
 The MIT License (MIT)
-Copyright (c) 2016 IDNT Europe GmbH
+Copyright (c) 2016 [IDNT Europe GmbH](https://www.idnt.net/)
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
