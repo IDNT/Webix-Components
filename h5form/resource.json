@@ -1,0 +1,33 @@
+{
+	/*
+	 * This file holds repository information required by the IDNT
+	 * script service. It is not required to run the script.
+	 */
+	"title": "Webix HTML5 form",
+	"description": "Webix UI form component using the HTML5 validation API in addition to the webix builtin validation support.",
+	"author": "IDNT Europe GmbH",
+	"homepage": "https://idnt.net/",
+	"versions":
+	{
+		"default": "1.0.0",
+		"1.0.0": 
+		{
+			"isloaded": "typeof(webix) !== 'undefined' && typeof(webix.ui.h5form) !== 'undefined'",
+			"includes": 
+			[
+				{
+					"type": "Javascript",
+					"name": "1.1.js",
+				},
+			],
+			"requires":
+			[
+				{
+					"name": "webix",
+					"version":[ ">=3.2" ]
+				}
+			]
+		},
+	}
+}
+
