@@ -250,18 +250,18 @@ webix.protoUI({
 		
 		// We abuse onViewShow to detect that the form was initialized and shown. 
 		this._form.attachEvent("onViewShow", function(){
-			if (self._input)
-				return; // Already initialized
 			
+			if (self._input)
+				return;	// Already initialized
+				
 			self._input = this.elements[self.config.input];
 			if (! self._input) {
 				webix.message({type: 'error', text: 'goodpwd: The specified input field "'+self.config.input+'" could not be found.'});
 				return;
 			}
 			
-			var node = self._input.getInputNode();
-			node.onkeyup = function(e) {
-				var strength = self._getStrength(node.value);
+			self._input.attachEvent("onKeyPress", function(){
+				var strength = self._getStrength(this.getValue());
 				var status = { valid: false, msg: 'Be creative...', css: 'red' };
 				for(i=0; i<self._steps.length; i++) {
 					var score = self._steps[i];
@@ -270,13 +270,14 @@ webix.protoUI({
 						break;
 					}
 				}
-
+				
 				self.isValid = status.valid;
 				self._viewobj.innerHTML = '<div class="container '+status.css+'">'
 					+'<div class="strength" style="width:'+strength+'%"></div>'
 					+'<div class="message">'+status.msg+'</div>'
 					+'</div>';
-			}			
+				
+			});			
 		});
 		
 		// Add validation rule to for the input field
@@ -291,5 +292,5 @@ webix.protoUI({
 				return savedInputRule.call(this, arguments);
 			return true;
 		};
-	},
+	}
 }, webix.ui.baseview);
