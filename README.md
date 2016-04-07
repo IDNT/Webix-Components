@@ -5,6 +5,7 @@
 ## Components
 
 h5form - A drop in replacement for the webix form with support for the HTML5 validation API
+goodpwd - A password strength indicator with validation for webix forms
 
 ## Contributing
 

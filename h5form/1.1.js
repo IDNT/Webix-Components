@@ -4,6 +4,9 @@
  *
  * Provided under MIT License (MIT)
  * Copyright (C) 2016 IDNT Europe GmbH (www.idnt.net)
+ *
+ * v1.0 Marcus Zoller - Initial version using jQuery
+ * v1.1 Marcus Zoller - Removed jQuery dependency
  */
  
 if (typeof webix === 'undefined') 
@@ -57,7 +60,7 @@ webix.protoUI({
 						valid = false;
 					}
 				}    
-			});			
+			});
 			return valid && (!savedObjRule !== 'function' || savedObjRule.call(this, arguments));
 		}
 		

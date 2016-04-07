@@ -3,8 +3,8 @@
 	 * This file holds repository information required by the IDNT
 	 * script service. It is not required to run the script.
 	 */
-	"title": "Webix HTML5 form",
-	"description": "Webix UI form component using the HTML5 validation API in addition to the webix builtin validation support.",
+	"title": "Webix Password Strength",
+	"description": "Webix UI component for displaying a password strength indication.",
 	"author": "IDNT Europe GmbH",
 	"homepage": "https://github.com/IDNT/Webix-Components",
 	"versions":
@@ -12,12 +12,16 @@
 		"default": "1.0.0",
 		"1.0.0": 
 		{
-			"isloaded": "typeof(webix) !== 'undefined' && typeof(webix.ui.h5form) !== 'undefined'",
+			"isloaded": "typeof(webix) !== 'undefined' && typeof(webix.ui.goodpwd) !== 'undefined'",
 			"includes": 
 			[
 				{
 					"type": "Javascript",
 					"name": "1.1.js",
+				},
+				{
+					"type": "Stylesheet",
+					"name": "1.1.css",
 				},
 			],
 			"requires":

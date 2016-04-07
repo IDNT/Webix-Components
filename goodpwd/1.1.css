@@ -1,0 +1,37 @@
+.webix_view.webix_idnt_goodpwd {
+	padding-left:3px;
+}
+.webix_view.webix_idnt_goodpwd .container {
+	position:relative;
+	height:24px;
+	vertical-align: middle;
+}
+.webix_view.webix_idnt_goodpwd .strength {
+	position:absolute;
+	background-color: #fefefe;
+	display: block;
+	height:24px;
+}
+.webix_view.webix_idnt_goodpwd .message {
+	position:absolute;
+	color: #fff;
+	padding-left:15px;
+	line-height: 24px;
+	height:24px;
+}
+.webix_view.webix_idnt_goodpwd .bad .strength {
+	background-color: #e94442;
+}
+.webix_view.webix_idnt_goodpwd .warn .strength {
+	background-color: #ffc266;
+}
+.webix_view.webix_idnt_goodpwd .valid .strength {
+	background-color: #0099ff;
+}
+.webix_view.webix_idnt_goodpwd .good .strength {
+	background-color: #00b33c;
+}
+.webix_view.webix_idnt_goodpwd .perfect .strength {
+	background-color: #00b33c;
+	font-weight: bold;
+}
