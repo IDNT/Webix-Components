@@ -14,7 +14,7 @@ Example:
 
 	webix.ui({
 	{
-		view: 'h5form',
+		view: 'form',
 		rules:{
 			'pwdrep':function(v) {
 				if (!webix.rules.isNotEmpty(v)) {
@@ -30,18 +30,15 @@ Example:
 			}
 		},
 		elements: [
-			{ name:'curpwd', view: 'text', label: 'Current', type: 'password', required:true, 
-				attributes:{ maxlength: 100, required:'required' } },
-			{ name: 'newpwd', view: 'text', label: 'New', type: 'password', required:true, 
-				attributes:{ pattern:'.{10,}', maxlength: 100, required:'required' } },
+			{ name:'curpwd', view: 'text', label: 'Current', type: 'password', required:true },
+			{ name: 'newpwd', view: 'text', label: 'New', type: 'password', required:true },
 			{
 				cols:[
 					{ label:'', width: 130 },
 					{ view:'goodpwd', input: 'newpwd', msgfail: 'Bad password!' },
 				]
 			},
-			{ name: 'pwdrep', view: 'text', label: 'Repeat', type: 'password', required:true,
-				attributes:{ pattern:'.{10,}', minlength:10, maxlength: 100, required:'required' } },
+			{ name: 'pwdrep', view: 'text', label: 'Repeat', type: 'password', required:true },
 			{ 
 				margin:10, 
 				cols:[
@@ -85,6 +82,7 @@ team and should be fixed with the next build.
 ## License
 
 The MIT License (MIT)
+
 Copyright (c) 2016 [IDNT Europe GmbH](https://www.idnt.net/)
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
