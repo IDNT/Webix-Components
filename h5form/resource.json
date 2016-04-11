@@ -9,8 +9,8 @@
 	"homepage": "https://github.com/IDNT/Webix-Components",
 	"versions":
 	{
-		"default": "1.0.0",
-		"1.0.0": 
+		"default": "1.1.4",
+		"1.1.4": 
 		{
 			"isloaded": "typeof(webix) !== 'undefined' && typeof(webix.ui.h5form) !== 'undefined'",
 			"includes": 
