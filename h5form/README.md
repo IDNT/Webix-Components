@@ -1,6 +1,8 @@
-# Project Name
+# Webix form component
 
 Webix UI form drop in replacement using the HTML5 validation API in addition to the webix builtin validation support.
+
+Additional features allow autosizing of a fields bottom description (bottomPadding), depending on the available screensize and automatical placement of a fields label (top or left) depending on the available width. See the "defaults" section on the source for available configuration options.
 
 ## Installation
 

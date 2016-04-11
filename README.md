@@ -1,10 +1,10 @@
-# Project Name
+# IDNT Webix Components
 
-[Webix](http://webix.com/) components build by [IDNT](https://www.idnt.net/).
+This repository contains [Webix](http://webix.com/) components created by [IDNT](https://www.idnt.net/). You can use these components in OSS and commercial applications for free.
 
 ## Components
 
-h5form - A drop in replacement for the webix form with support for the HTML5 validation API
+h5form - A drop in replacement for the webix form with support for the HTML5 validation API and additional features like autopositioning of labels, ...
 
 goodpwd - A password strength indicator with validation for webix forms
 
