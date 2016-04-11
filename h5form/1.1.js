@@ -32,61 +32,62 @@ webix.protoUI({
 		
 		this.config = webix.extend(config, this.defaults, false);
 		
-		if (!this.$view.checkValidity)		
-			return; // We are done if we have no validation API
-		
 		var self = this;
-		
+
 		config.elementsConfig = config.elementsConfig || {};
 		config.elementsConfig.on = config.elementsConfig.on || {};
 		if (config.autoLabelPositioning) {
 			config.elementsConfig.labelPosition = config.elementsConfig.labelPosition || config.defaultLabelPosition;
 			config.elementsConfig.labelWidth = config.elementsConfig.labelWidth || config.defaultLabelWidth;
 		}
-		var savedOnChange = config.elementsConfig.on.onChange;
-		config.elementsConfig.on.onChange = function(newV, oldV) {
-			if (this.config.name) {
-				self.$view.checkValidity()
-				var node = this.getInputNode();
-				if (node && typeof node.willValidate !== 'undefined' && node.validity && !node.validity.valid) 
-					self.markInvalid(this.config.name, node.validationMessage || 'Please check your input.');			
+
+		if (this.$view.checkValidity) { // Ensure we have the validation API
+
+			var savedOnChange = config.elementsConfig.on.onChange;
+			config.elementsConfig.on.onChange = function(newV, oldV) {
+				if (this.config.name) {
+					self.$view.checkValidity()
+					var node = this.getInputNode();
+					if (node && typeof node.willValidate !== 'undefined' && node.validity && !node.validity.valid) 
+						self.markInvalid(this.config.name, node.validationMessage || 'Please check your input.');			
+				}
+				
+				if (typeof savedOnChange === 'function')
+					savedOnChange.call(this, newVm, oldV);
 			}
 			
-			if (typeof savedOnChange === 'function')
-				savedOnChange.call(this, newVm, oldV);
+			config.rules = config.rules || {};
+			var savedObjRule = config.rules.$obj;
+			config.rules.$obj = function() {
+				var valid = true;	
+				Object.keys(self.elements).forEach(function (fieldName) {
+					var inputView = self.elements[fieldName];
+					if (inputView) {
+						var node = inputView.getInputNode();
+						if (node && typeof node.willValidate !== 'undefined' && node.validity && !node.validity.valid) {
+							self.markInvalid(fieldName, node.validationMessage || 'Please check your input.');
+							valid = false;
+						}
+					}    
+				});			
+				return valid && (!savedObjRule !== 'function' || savedObjRule.call(this, arguments));
+			}
+			
+			config.on = config.on || {};
+			var savedHandler = config.on.onBeforeValidate;
+			config.on.onBeforeValidate = function() {
+				self.$view.checkValidity()
+				if (savedHandler === 'function')
+					savedHandler.call(this, arguments);	
+			}
+			
+			this.$view.onsubmit = function(e) {
+				self.clearValidation();
+				self.validate();
+				e.preventDefault();		
+				return false;
+			};
 		}
-		
-		config.rules = config.rules || {};
-		var savedObjRule = config.rules.$obj;
-		config.rules.$obj = function() {
-			var valid = true;	
-			Object.keys(self.elements).forEach(function (fieldName) {
-				var inputView = self.elements[fieldName];
-				if (inputView) {
-					var node = inputView.getInputNode();
-					if (node && typeof node.willValidate !== 'undefined' && node.validity && !node.validity.valid) {
-						self.markInvalid(fieldName, node.validationMessage || 'Please check your input.');
-						valid = false;
-					}
-				}    
-			});			
-			return valid && (!savedObjRule !== 'function' || savedObjRule.call(this, arguments));
-		}
-		
-		config.on = config.on || {};
-		var savedHandler = config.on.onBeforeValidate;
-		config.on.onBeforeValidate = function() {
-			self.$view.checkValidity()
-			if (savedHandler === 'function')
-				savedHandler.call(this, arguments);	
-		}
-		
-		this.$view.onsubmit = function(e) {
-			self.clearValidation();
-			self.validate();
-			e.preventDefault();		
-			return false;
-		};
 	},
 	_initLabelPosition:function(adjust) {
 		var pos = 'left';
