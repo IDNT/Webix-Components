@@ -8,7 +8,7 @@ Additional features allow autosizing of a fields bottom description (bottomPaddi
 
 Just include after loading webix. Tested with webix version 3.2.4 and current desktop and mobile browsers.
 
-For plug and play usage include the latest version of this component from the IDNT CDN:
+For plug and play usage include the latest and minimized version of this component from the IDNT CDN:
 
     <script type="text/javascript" src="https://api.idnt.net/script/get/webix.ui.h5form.js" async="async" defer="defer"></script>
 
