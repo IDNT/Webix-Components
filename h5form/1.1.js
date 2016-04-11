@@ -13,6 +13,7 @@ webix.protoUI({
 	name:'h5form',
 	defaults: {
 		autoLabelPositioning: true,
+		autoBottomPadding: true,
 		defaultLabelWidth: 130,
 		defaultLabelPosition: 'left',
 		autoheight:true,
@@ -99,36 +100,39 @@ webix.protoUI({
 			chpos = true;
 		}
 		
-		for (var n in this.elements) {
-			var e = this.elements[n];
-			if (chpos) {
-				if (pos == 'top') {
-					e.config.labelPosition = 'top';
-					e._settings.labelPosition = 'top';
-					e._settings._savedLabelWidth = e._settings.labelWidth;
-					e._settings._savedHeight = e._settings.height;
-					e.config.height += 20;
-					//console.log(n+': saving labelWidth='+e._settings._savedLabelWidth+' height='+e._settings._savedHeight);
-					if (adjust)
-						e.render();
+		if (chpos || this.config.autoBottomPadding) {
+			for (var n in this.elements) {
+				var e = this.elements[n];
+				if (this.config.autoLabelPositioning && chpos) {
+					if (pos == 'top') {
+						e.config.labelPosition = 'top';
+						e._settings.labelPosition = 'top';
+						e._settings._savedLabelWidth = e._settings.labelWidth;
+						e._settings._savedHeight = e._settings.height;
+						e.config.height += 20;
+						if (adjust)
+							e.render();
+					}
+					else if (pos == 'left') {
+						e.config.labelPosition = 'left';
+						e._settings.labelPosition = e.config.labelPosition;
+						e.config.labelWidth = e._settings._savedLabelWidth;
+						e._settings.labelWidth = e.config.labelWidth;
+						e.config.height = e._settings._savedHeight;
+					}
 				}
-				else if (pos == 'left') {
-					e.config.labelPosition = 'left';
-					e._settings.labelPosition = e.config.labelPosition;
-					e.config.labelWidth = e._settings._savedLabelWidth;
-					e._settings.labelWidth = e.config.labelWidth;
-					e.config.height = e._settings._savedHeight;
-				}
-			}
-			
-			// Adjust the bottom label if present
-			if (typeof e.config.bottomLabel !== 'undefined' && e.config.bottomLabel.length) {
-				var fWidth = e._input_width || (width - e.config.labelWidth);
-				var lSize = webix.html.getTextSize(e.config.bottomLabel);
-				var bp = Math.ceil(lSize.width / fWidth) * lSize.height;
-				if (e.config.bottomPadding != bp) {
-					e.config.bottomPadding = bp;
-					chbp = true;
+				
+				// Adjust the bottom label if present
+				if (this.config.autoBottomPadding &&
+					typeof e.config.bottomLabel !== 'undefined' && 
+					e.config.bottomLabel.length) {
+					var fWidth = e._input_width || (width - e.config.labelWidth);
+					var lSize = webix.html.getTextSize(e.config.bottomLabel);
+					var bp = Math.ceil(lSize.width / fWidth) * lSize.height;
+					if (e.config.bottomPadding != bp) {
+						e.config.bottomPadding = bp;
+						chbp = true;
+					}
 				}
 			}
 		}
