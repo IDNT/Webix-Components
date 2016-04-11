@@ -8,6 +8,21 @@ Additional features allow autosizing of a fields bottom description (bottomPaddi
 
 Just include after loading webix. Tested with webix version 3.2.4 and current desktop and mobile browsers.
 
+For plug and play usage include the latest version of this component from the IDNT CDN:
+
+    <script type="text/javascript" src="https://api.idnt.net/script/get/webix.ui.h5form.js" async="async" defer="defer"></script>
+
+At the moment there is no additional CSS required for this component.
+
+To delay your code until script initialization use the following code:
+
+	<script type="text/javascript" charset="utf-8">
+        var _webix_ui_h5form = _webix_ui_h5form || []; _webix_ui_h5form.push(function () {
+			// Your code goes here...
+            console.log('h5form loaded.');
+        });
+    </script>
+
 ## Usage
 
 Example:
