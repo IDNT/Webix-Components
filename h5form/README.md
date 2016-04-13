@@ -2,7 +2,8 @@
 
 Webix UI form drop in replacement using the HTML5 validation API in addition to the webix builtin validation support.
 
-Additional features allow autosizing of a fields bottom description (bottomPadding), depending on the available screensize and automatical placement of a fields label (top or left) depending on the available width. See the "defaults" section on the source for available configuration options.
+Additional features allow autosizing of a fields bottom description (bottomPadding), depending on the available screensize and automatical placement of a fields label (top or left) depending on the available width. See the "defaults" section on the source for available configuration options. 
+You may combine this with our "busyoverlay" extension (see description of this component).
 
 ## Installation
 
@@ -10,7 +11,11 @@ Just include after loading webix. Tested with webix version 3.2.4 and current de
 
 For plug and play usage include the latest and minimized version of this component from the IDNT CDN:
 
-    <script type="text/javascript" src="https://api.idnt.net/script/get/webix.ui.h5form.js" async="async" defer="defer"></script>
+Optional:
+    <script type="text/javascript" src="https://api.idnt.net/script/get/webix.ui.busyoverlay.js"></script>
+
+Required:
+    <script type="text/javascript" src="https://api.idnt.net/script/get/webix.ui.h5form.js"></script>
 
 At the moment there is no additional CSS required for this component.
 
@@ -86,6 +91,7 @@ team and should be fixed with the next build.
 ## History
 
 1.0 IDNT <marc> created
+1.1.5 IDNT <marc> Added support for busyoverlay extension
 
 ## Credits
 

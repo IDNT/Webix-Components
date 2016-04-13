@@ -1,14 +1,61 @@
-# IDNT Webix Components
+# Webix busy overlay
 
-This repository contains [Webix](http://webix.com/) components created by [IDNT](https://www.idnt.net/). You can use these components in OSS and commercial applications for free.
+Webix UI extension to show a spinner overlay. 
 
-## Components
+## Installation
 
-h5form - A drop in replacement for the webix form with support for the HTML5 validation API and additional features like autopositioning of labels, ...
+Just include after loading webix. 
 
-goodpwd - A password strength indicator with validation for webix forms
+## Usage
 
-busyoverlay - A overlay extension showing a spinner and custom message, integrating nicely with the h5form and other webix components
+Example:
+
+	webix.ui({
+	{
+		view: 'form',
+		id: 'myform',
+		elements: [
+			{ name:'curpwd', view: 'text', label: 'Current', type: 'password' },
+			{ 
+				margin:10, 
+				cols:[
+					{},
+					{ view:'button', value:'Submit' , width:160, type:'form' }
+					},
+				]
+			},
+			{}
+		]	
+	})
+
+	webix.extend($$('myform'), webix.OverlayBox);
+	$$('myform').showBusy('Loading...');
+	$$('myform').hideBusy();
+	
+If you are using the IDNT h5form component, you don't need to use the webix.extend method and you can set the initial busy state:
+
+	webix.ui({
+	{
+		view: 'h5form',
+		id: 'myform',
+		busy: 'Please wait...',
+		elements: [
+			{ name:'curpwd', view: 'text', label: 'Current', type: 'password' },
+			{ 
+				margin:10, 
+				cols:[
+					{},
+					{ view:"button", value:"Submit" , width:160, type:"form" }
+					},
+				]
+			},
+			{}
+		]	
+	})
+
+## Issues
+
+Should be more configurable.
 
 ## Contributing
 
@@ -18,12 +65,16 @@ busyoverlay - A overlay extension showing a spinner and custom message, integrat
 4. Push to the branch: `git push origin my-new-feature`
 5. Submit a pull request :D
 
+## History
+
+1.0 IDNT <marc> created
+
 ## Credits
+
 
 ## License
 
 The MIT License (MIT)
-
 Copyright (c) 2016 [IDNT Europe GmbH](https://www.idnt.net/)
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:

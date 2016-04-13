@@ -3,16 +3,16 @@
 	 * This file holds repository information required by the IDNT
 	 * script service. It is not required to run the script.
 	 */
-	"title": "Webix HTML5 form",
-	"description": "Webix UI form component using the HTML5 validation API in addition to the webix builtin validation support.",
+	"title": "Webix Busy Overlay",
+	"description": "Webix UI component extension displaying a spinner animation overlay.",
 	"author": "IDNT Europe GmbH",
 	"homepage": "https://github.com/IDNT/Webix-Components",
 	"versions":
 	{
-		"default": "1.1.5",
-		"1.1.5": 
+		"default": "1.1.0",
+		"1.1.0": 
 		{
-			"isloaded": "typeof(webix) !== 'undefined' && typeof(webix.ui.h5form) !== 'undefined'",
+			"isloaded": "typeof(webix) !== 'undefined' && typeof(webix.idntBusyOverlay) !== 'undefined'",
 			"includes": 
 			[
 				{
@@ -25,7 +25,7 @@
 				{
 					"name": "webix",
 					"version":[ ">=3.2" ]
-				},
+				}
 			]
 		},
 	}

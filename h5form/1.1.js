@@ -5,6 +5,14 @@
  * Provided under MIT License (MIT)
  * Copyright (C) 2016 IDNT Europe GmbH (www.idnt.net)
  */
+/*
+ * Version History:
+ * v1.0.0 IDNT/Marcus Zoller - Initial version
+ * v1.1.0 IDNT/Marcus Zoller - Removed jQuery dependency
+ * v1.1.3 IDNT/Marcus Zoller - Feature: auto label positioning
+ * v1.1.4 IDNT/Marcus Zoller - Feature: auto bottom padding
+ * v1.1.5 IDNT/Marcus Zoller - Feature: busy animation
+ */
  
 if (typeof webix === 'undefined') 
     throw new Error('h5form requires webix');
@@ -146,5 +154,14 @@ webix.protoUI({
 		if (typeof parentWidth !== 'undefined')
 			this._initLabelPosition(true);
 		return webix.ui.form.prototype.$setSize.call(this,x,y);
-	}
-}, webix.ui.form);
+	},
+	busy_setter:function(value){
+		console.log('busy_setter: '+typeof this.showBusy);
+		if (typeof this.showBusy === 'function') {
+			if (value)
+				this.showBusy(value);
+			else
+				this.hideBusy();
+		}
+	},
+}, webix.ui.form, webix.idntBusyOverlay);

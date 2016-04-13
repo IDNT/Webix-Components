@@ -2,6 +2,8 @@
 	padding-left:3px;
 }
 .webix_view.webix_idnt_goodpwd .container {
+	background-color:#ccc;
+	border: 1px solid #cecece;
 	position:relative;
 	height:24px;
 	vertical-align: middle;
@@ -16,20 +18,20 @@
 	position:absolute;
 	color: #fff;
 	padding-left:15px;
-	line-height: 24px;
+	line-height: 21px;
 	height:24px;
 }
 .webix_view.webix_idnt_goodpwd .bad .strength {
 	background-color: #e94442;
 }
 .webix_view.webix_idnt_goodpwd .warn .strength {
-	background-color: #ffc266;
+	background-color: #ee9233;
 }
 .webix_view.webix_idnt_goodpwd .valid .strength {
 	background-color: #0099ff;
 }
 .webix_view.webix_idnt_goodpwd .good .strength {
-	background-color: #00b33c;
+	background-color: #27ae60;
 }
 .webix_view.webix_idnt_goodpwd .perfect .strength {
 	background-color: #00b33c;
