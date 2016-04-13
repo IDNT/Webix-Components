@@ -26,6 +26,10 @@
 					"name": "webix",
 					"version":[ ">=3.2" ]
 				},
+				{
+					"name": "webix.ui.busyoverlay",
+					"version":[ ">=1.0" ]
+				},
 			]
 		},
 	}

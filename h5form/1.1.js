@@ -164,4 +164,4 @@ webix.protoUI({
 				this.hideBusy();
 		}
 	},
-}, webix.ui.form, webix.idntBusyOverlay);
+}, webix.ui.form, webix.idntBusyOverlay || {});
