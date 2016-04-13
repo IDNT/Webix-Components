@@ -12,9 +12,11 @@ Just include after loading webix. Tested with webix version 3.2.4 and current de
 For plug and play usage include the latest and minimized version of this component from the IDNT CDN:
 
 Optional:
+
     <script type="text/javascript" src="https://api.idnt.net/script/get/webix.ui.busyoverlay.js"></script>
 
 Required:
+
     <script type="text/javascript" src="https://api.idnt.net/script/get/webix.ui.h5form.js"></script>
 
 At the moment there is no additional CSS required for this component.
