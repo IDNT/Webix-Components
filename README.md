@@ -10,6 +10,8 @@ goodpwd - A password strength indicator with validation for webix forms
 
 busyoverlay - A overlay extension showing a spinner and custom message, integrating nicely with the h5form and other webix components
 
+sidebar - Touchfriendly version of the webix sidebar components
+
 ## Contributing
 
 1. Fork it!

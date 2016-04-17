@@ -16,16 +16,18 @@ if (typeof webix === 'undefined')
 webix.idntBusyOverlay = {
 	showBusy:function(message){
 		if (!this._busyOverlay){
-			this._busyOverlay = webix.html.create("DIV",{ 'class':'webix_overlay', 'style':'background-color:#fff;opacity:1;color:#333;' },'');
+			this._busyOverlay = webix.html.create("DIV",{ 'class':'webix_overlay', 'style':'position:fixed;display:block;height:100%;background-color:#fff;opacity:.9;color:#333;' },'');
 			webix.html.insertBefore(this._busyOverlay, this._viewobj.firstChild, this._viewobj);
-			this._viewobj.style.position = "relative";
+			this._viewobj.style.position = 'relative';
 		} 
-		this._busyOverlay.innerHTML = '<div style="position:absolute;display:inline-block;top:45%;left:40%;margin-top:-50px;"><i class="fa fa-spinner fa-pulse fa-5x"></i><div class="idnt_busyoverlay_message" style="margin-top:25px;font-size:1.2em;">'+(message||'')+'</div></div>';
+		this._busyOverlay.innerHTML = '<div style="position:absolute;display:block;top:25%;left:20%;margin-top:-50px;"><i class="fa fa-spinner fa-pulse fa-5x"></i><div class="idnt_busyoverlay_message" style="margin-top:25px;font-size:1.2em;">'+(message||'')+'</div></div>';
+		return this;
 	},
 	hideBusy:function(){
 		if (this._busyOverlay){
 			webix.html.remove(this._busyOverlay);
 			this._busyOverlay = null;
 		}
+		return this;
 	}
 }

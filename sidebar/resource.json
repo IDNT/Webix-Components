@@ -1,0 +1,33 @@
+{
+	"title": "Webix Sidebar",
+	"description": "Collapsible sidebar for the Webix UI framework",
+	"author": "IDNT Europe GmbH",
+	"homepage": "https://github.com/IDNT/Webix-Components",
+	"versions":
+	{
+		"default": "1.0.0",
+		"1.0.0": 
+		{
+			"isloaded": "typeof(webix) !== 'undefined' && typeof(webix.ui.sidebar) !== 'undefined'",
+			"includes": 
+			[
+				{
+					"type": "Javascript",
+					"name": "1.0.0.js",
+				},
+				{
+					"type": "Stylesheet",
+					"name": "1.0.0.css",
+				}
+			],
+			"requires":
+			[
+				{
+					"name": "webix",
+					"version":[ ">=3.2" ]
+				}
+			]
+		},
+	}
+}
+

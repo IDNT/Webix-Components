@@ -26,11 +26,11 @@ webix.protoUI({
 		reqlower: true,		// Lowercase character is required
 		pctbadmax: 25,		// Maximum percentage returned if password complexity fails
 		steps: { 
-			0: { valid: false, msg: 'Be creative...', css: 'bad' },
-			20: { valid: false, msg: 'Go on...', css: 'warn' },
-			50: { valid: false, msg: 'Okay... can you do better?', css: 'valid' },
-			56: { valid: true, msg: 'This looks good to me!', css: 'good' },
-			70: { valid: true, msg: 'This is perfect!', css: 'perfect' }
+			0: { valid: false, msg: ':-( tzzzz...', css: 'bad' },
+			20: { valid: false, msg: ':-( Go on...', css: 'warn' },
+			50: { valid: false, msg: ':-| Okay but...', css: 'valid' },
+			56: { valid: true, msg: ':-) Good', css: 'good' },
+			70: { valid: true, msg: ':-) Perfect!', css: 'perfect' }
 		},
 		input: 'newpwd'		// Name of the input field
 	},
@@ -243,7 +243,9 @@ webix.protoUI({
 			+'</div>';
 		
 		this.config = webix.extend(config, this.defaults, false);
-		this._steps = Object.keys(this.config.steps).map(function(x){return parseInt(x);}).sort().reverse();
+		
+		this._steps = Object.keys(this.config.steps).map(function(x){
+			return parseInt(x);}).sort().reverse();
 		
 		var self = this;
 		this._form = this.getFormView();

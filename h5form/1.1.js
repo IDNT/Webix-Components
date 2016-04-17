@@ -156,12 +156,12 @@ webix.protoUI({
 		return webix.ui.form.prototype.$setSize.call(this,x,y);
 	},
 	busy_setter:function(value){
-		console.log('busy_setter: '+typeof this.showBusy);
 		if (typeof this.showBusy === 'function') {
-			if (value)
+			if (value) {
 				this.showBusy(value);
-			else
+			} else {
 				this.hideBusy();
+			}
 		}
 	},
 }, webix.ui.form, webix.idntBusyOverlay || {});
