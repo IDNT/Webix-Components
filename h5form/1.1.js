@@ -66,7 +66,7 @@ webix.protoUI({
 			
 			config.rules = config.rules || {};
 			var savedObjRule = config.rules.$obj;
-			config.rules.$obj = function() {
+			config.rules.$obj = function(d) {
 				var valid = true;	
 				Object.keys(self.elements).forEach(function (fieldName) {
 					var inputView = self.elements[fieldName];
@@ -77,8 +77,8 @@ webix.protoUI({
 							valid = false;
 						}
 					}    
-				});			
-				return valid && (!savedObjRule !== 'function' || savedObjRule.call(this, arguments));
+				});
+				return valid && (typeof savedObjRule !== 'function' || savedObjRule.call(this, d));
 			}
 			
 			config.on = config.on || {};
