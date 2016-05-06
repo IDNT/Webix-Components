@@ -98,7 +98,7 @@ webix.protoUI({
 		var list = this.getPopupList();
 		list.masterId = id;
 		var selectedId = this.getSelectedId();
-		var data = [].concat(webix.copy(this.data.getBranch(id)));
+		var data = [].concat(webix.copy(this.data.getBranch(id))).filter(function(d) { return !d.hidden; });
 		list.unselect();
 		if(data.length){
 			list.show();
@@ -129,8 +129,8 @@ webix.protoUI({
 				body:{
 					rows:[
 						{
-							view: "template", 	borderless: true, css: "webix_sidebar_popup_title",
-							template: "#value#", height: this.config.titleHeight+2,
+							view: "template",	borderless: true, css: "webix_sidebar_popup_title",
+							template: config.popupItemTemplate || '#value#', height: this.config.titleHeight+2,
 							on:{
 								onMasterSelect: function(id){
 									var master = this.getTopParentView().master;
@@ -151,7 +151,8 @@ webix.protoUI({
 								}
 							}
 						},
-						{ view: "list", select: true, 	borderless: true, css: "webix_sidebar_popup_list",  autoheight: true,
+						{ view: "list", select: true, borderless: true, css: "webix_sidebar_popup_list",  autoheight: true,
+							template: config.popupItemTemplate || '#value#', datatype: config.datatype,
 							on:{
 								onAfterSelect: function(id){
 									this.getTopParentView().master.select(id);
@@ -251,9 +252,11 @@ webix.type(webix.ui.tree, {
 	height: "auto",
 	css: "webix_sidebar",
 	template: function(obj, common){
+		if (obj.hidden)
+			return '';
 		if(common.collapsed)
 			return common.icon(obj, common);
-		return   common.arrow(obj, common)+common.icon(obj, common) +"<span>"+obj.value+"</span>";
+		return common.arrow(obj, common)+common.icon(obj, common) +"<span>"+obj.value+"</span>";
 	},
 	arrow: function(obj, common){
 		var html = "";
